@@ -1,5 +1,4 @@
 module.exports = {
     SYSTEM_PORT: 5050,
-    OWNER_EMAIL: "",
-    OWNER_EMAIL_PASSWORD: ""
+    MONGO_URI: "mongodb+srv://senyap:senyap@server1.dkemy.mongodb.net/db_fop?retryWrites=true&w=majority"
 }
