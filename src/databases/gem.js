@@ -3,16 +3,24 @@ const Schema = mongoose.Schema;
 
 // Create schema
 const gemSchema = new Schema({
-  gem_id: {
-    type: String,
-    required: true
-  },
-  type: {
-    type: Number,
-    default: 0
-  },
+    gem_id: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: Number,
+        default: 0
+    },
+	last_update: {
+		type: Date,
+		default: Date.now
+	},
+    created_at: {
+        type: Date,
+        default: Date.now
+    }
 });
 
-const Gem = mongoose.model("gems", gemSchema)
+const Gems = mongoose.model("gems", gemSchema)
 
-module.exports = Gem
+module.exports = Gems

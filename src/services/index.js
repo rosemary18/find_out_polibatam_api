@@ -4,6 +4,8 @@ const apis = require('./apis')
 const socket = require('./socket')
 const middleware = require('./middleware')
 const db = require('./db')
+const static = require('./static')
+const schedule = require('./schedule')
 
 module.exports = {
     socket,
@@ -11,5 +13,7 @@ module.exports = {
     port_service,
     apis,
     middleware,
-    db
+    db,
+    static,
+    schedule
 }

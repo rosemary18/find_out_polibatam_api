@@ -1,0 +1,16 @@
+.header-section {
+    border-radius: 5px;
+    display: flex;
+    flex: 1;
+    height: 56px;
+    background-color: #ffffff;
+    margin: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+    align-items: center;
+}
+
+body {
+    /* background-color: #f5f5f5; */
+    background-color: #202124;
+}

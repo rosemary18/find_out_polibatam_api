@@ -5,8 +5,12 @@ const {
     port_service,
     apis,
     middleware,
-    db
+    db,
+    static,
+    schedule
 } = require('./services')
+
+// Exporting module in ./src folder
 
 module.exports = {
 
@@ -19,6 +23,8 @@ module.exports = {
     port_service,
     apis,
     middleware,
+    static,
+    schedule,
 
     // Databases
     db

@@ -3,34 +3,57 @@ const Schema = mongoose.Schema;
 
 // Create schema
 const userSchema = new Schema({
-  uuid: {
-    type: String,
-    required: true
-  },
-  avatar: {
-    type: String,
-    default: ""
-  },
-  score: {
-    type: Number,
-    default: 0
-  },
-  achievements: {
-    type: Array
-  },
-  galleries: {
-    type: Array
-  },
-  last_update: {
-    type: Date,
-    default: Date.now
-  },
-  created_at: {
-    type: Date,
-    default: Date.now
-  }
+	uuid: {
+		type: String,
+		required: true
+	},
+	username: {
+		type: String,
+		default: ''
+	},
+	avatar: {
+		type: String,
+		default: ""
+	},
+	gem: {
+		type: Number,
+		default: 0
+	},
+	score: {
+		type: Number,
+		default: 0
+	},
+	answered_quiz: {
+		type: Number,
+		default: 0
+	},
+	achievements: [{type: Schema.Types.ObjectId, ref: 'achievements'}],
+	galleries: [{type: Schema.Types.ObjectId, ref: 'galleries'}],
+	gem_logs: [
+		{
+			gem_id: {
+				type: String
+			},
+			scan_times: {
+				type: Number,
+				default: 0
+			},
+			last_scan: {
+				type: Date,
+				default: Date.now
+			}
+		}
+	],
+	last_update: {
+		type: Date,
+		default: Date.now
+	},
+	created_at: {
+		type: Date,
+		default: Date.now
+	}
 });
 
-const User = mongoose.model("users", userSchema)
+const Users = mongoose.model("users", userSchema)
 
-module.exports = User
+module.exports = Users

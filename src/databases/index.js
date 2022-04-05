@@ -1,5 +1,13 @@
-const User = require('./user')
+const Users = require('./user')
+const Gems = require('./gem')
+const Achievements = require('./achievement')
+const Galleries = require('./gallery')
+const Quizzes = require('./quiz')
 
 module.exports = {
-    User
+    Users,
+    Gems,
+    Achievements,
+    Galleries,
+    Quizzes
 }

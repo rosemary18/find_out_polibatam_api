@@ -1,12 +1,10 @@
+// Importing module
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
-const {socket, body_parser, port_service, apis, middleware, db} = require('./src')
+const { socket, body_parser, port_service, apis, db, static, schedule } = require('./src')
 
 // Starting service ...
-
-// Start middleware, running at the first step to apply this function in router
-middleware(app)
 
 // Starting port service ...
 port_service(server);
@@ -21,4 +19,10 @@ apis(app)
 db()
 
 // Starting socket ...  
-socket(server)
+socket(server, app)
+
+// Serve static files
+static(app)
+
+// Start scheduler
+schedule.start()
