@@ -2,7 +2,7 @@ const express = require("express");
 const { differenceInMinutes, parseISOString } = require("instadate");
 const router = express.Router();
 const { return_format } = require('../configs');
-const { Galleries, Quizzes, Gems, Users } = require("../databases");
+const { Galleries, Quizzes, Gems, Users, Achievements } = require("../databases");
 const middleware = require('../services/middleware')
 
 // @POST Scan
@@ -16,6 +16,8 @@ router.post("/scan", middleware.USER, async (req, res) => {
     }
 
     const quiz = await Quizzes.find()
+    const achievement = await Achievements.find()
+
     let exist = false
     let random_quiz_index = Math.floor(Math.random() * (quiz?.length - 1) + 0)
 
@@ -28,6 +30,15 @@ router.post("/scan", middleware.USER, async (req, res) => {
         
         if(!user) {
             return res.status(406).send(return_format({status: 406, msg: "User tidak ditemukan"}))
+        }
+
+        // Achievement 
+        if (!user.achievements.some((item, i) => item.achievement_id === '3')) {
+            achievement.forEach((item, i) => {
+                item.achievement_id === '3' && user.achievements.push(item.id)
+            })
+            user.last_update = new Date()
+            user.save().catch(err => console.log(err));
         }
     
         if(gem_id) {
@@ -84,6 +95,7 @@ router.post("/answear", middleware.USER, async (req, res) => {
     }
 
     const quiz = await Quizzes.findOne({quiz_id})
+    const achievement = await Achievements.find()
 
     Users.findOne({uuid}).populate(['galleries', 'achievements']).exec(async (err, user) => {
         
@@ -128,15 +140,29 @@ router.post("/answear", middleware.USER, async (req, res) => {
                 if (gem.type === 0)  user.gem += 1
                 else if (gem.type === 1) user.gem += 2
                 else if (gem.type === 2) {
+                    if (!user.achievements.some((item, i) => item.achievement_id === '2')) {
+                        achievement.forEach((item, i) => {
+                            item.achievement_id === '2' && user.achievements.push(item.id)
+                        })
+                    }
                     user.gem += 20
                     gem.type = 0
                 }
 
                 user.answered_quiz += 1;
 
-                // Achievement logic
-                    // user.achievements.push('624b9f54417a711668c70cd8')
-                // 
+                // Achievement 
+                if (!user.achievements.some((item, i) => item.achievement_id === '1')) {
+                    achievement.forEach((item, i) => {
+                        item.achievement_id === '1' && user.achievements.push(item.id)
+                    })
+                }
+
+                if (!user.achievements.some((item, i) => item.achievement_id === '4') && user.gem >= 200) {
+                    achievement.forEach((item, i) => {
+                        item.achievement_id === '4' && user.achievements.push(item.id)
+                    })
+                }
 
                 user.last_update = new Date()
                 user.save().catch(err => console.log(`[REQ ERROR - ${req.path}]: ${err}`));
@@ -166,9 +192,12 @@ router.post("/answear", middleware.USER, async (req, res) => {
                     user.score += 5;
                     user.answered_quiz += 1;
                     
-                    // Achievement logic
-                    
-                    // 
+                    // Achievement
+                    if (!user.achievements.some((item, i) => item.achievement_id === '5') && user.answered_quiz >= 50) {
+                        achievement.forEach((item, i) => {
+                            item.achievement_id === '5' && user.achievements.push(item.id)
+                        })
+                    }
                     
                     user.last_update = new Date()
                     user.save().catch(err => console.log(`[REQ ERROR - ${req.path}]: ${err}`))
