@@ -2,6 +2,7 @@ const cron = require('node-cron')
 const { Gems } = require('../databases')
 const {schedule} = cron
 const http = require('http')
+const axios = require('axios').default
 
 const suffleGems = schedule('*/5 * * * *', async () => {
     
@@ -33,7 +34,11 @@ const resetGems = schedule('*/6 * * * *', async () => {
 })
 
 const keepAwake = schedule('*/5 * * * *', () => {
-    http.get('https://fop-server-id.herokuapp.com', () => null)
+
+    // Awake
+    axios.post('https://rosemary18-keep-awake.herokuapp.com', {callback: 'https://fop-server-id.herokuapp.com'})
+         .then(() => console.log('Ignore idling ...'))
+         .catch(err => console.log(err))
 })
 
 const start = () => {
