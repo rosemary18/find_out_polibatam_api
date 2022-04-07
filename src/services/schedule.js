@@ -17,8 +17,8 @@ const suffleSecretGems = schedule('30 17 * * *', async () => {
 
     // Suffle secret gem
     const Gem = await Gems.find()
-    Gem.forEach((item, _) => {
-        if (item.type === 3) Gems.findByIdAndUpdate(item.id, {type: 0})
+    Gem.forEach(async (item, _) => {
+        if (item.type === 3) await Gems.findByIdAndUpdate(item.id, {type: 0})
     })
 
     await Gems.findByIdAndUpdate(Gem[Math.floor(Math.random()*Gem.length)].id, {type: 3}).catch(err => console.log(err))
