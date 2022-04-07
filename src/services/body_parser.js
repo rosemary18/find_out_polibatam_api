@@ -1,5 +1,6 @@
 const morgan = require('morgan');
 const body_parser = require('body-parser');
+const multer = require('multer')()
 
 module.exports = (app) => {
 
@@ -13,4 +14,5 @@ module.exports = (app) => {
     app.use(morgan('combined'));
     app.use(body_parser.json({limit: '50mb'}));
     app.use(body_parser.urlencoded({limit: '50mb', extended: true}));
+    app.use(multer.any())
 }
