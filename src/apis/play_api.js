@@ -90,9 +90,7 @@ router.post("/answear", middleware.USER, async (req, res) => {
     const { uuid } = req.headers
     const { quiz_id, gem_id, answear_index, room_id } = req.body
 
-    if (!quiz_id || (!gem_id && !room_id) || !answear_index) {
-        return res.send(return_format({status: 406, msg: "Data yang diperlukan tidak ditemukan atau kurang"}))
-    }
+    if (!quiz_id || (!gem_id && !room_id) || !answear_index) return res.send(return_format({status: 406, msg: "Data yang diperlukan tidak ditemukan atau kurang"}))
 
     const quiz = await Quizzes.findOne({quiz_id})
     const achievement = await Achievements.find()
@@ -104,13 +102,9 @@ router.post("/answear", middleware.USER, async (req, res) => {
             res.status(404).json(return_format({msg: 'Terjadi kesalahan', status: 404}))
         }
 
-        if(!user) {
-            return res.status(404).json(return_format({status: 406, msg: "User tidak ditemukan"}))
-        }
+        if(!user) return res.status(404).json(return_format({status: 406, msg: "User tidak ditemukan"}))
         
-        if(!quiz) {
-            return res.status(404).json(return_format({status: 406, msg: "Kuis tidak ditemukan"}))
-        }
+        if(!quiz) return res.status(404).json(return_format({status: 406, msg: "Kuis tidak ditemukan"}))
     
         if (gem_id) {
     
@@ -212,20 +206,30 @@ router.post("/answear", middleware.USER, async (req, res) => {
 })
 
 // @POST Open door
-router.post("/open-door/:id", middleware.ALL, async (req, res) => {
+router.post("/open-door/:id", middleware.USER, async (req, res) => {
 
     const { id } = req.params
     const { uuid } = req.headers
     const { socket } = req.app
 
-    await Galleries.findOne({room_id: id}).then(async room => {
-        if(room && room?.device_socket) {
-            socket.to(room?.device_socket).emit('unlock', uuid || null)
-            res.status(200).send(return_format({status: 200, msg: "Membuka pintu"}))
-        } else {
-            res.status(406).send(return_format({status: 406, msg: "Tidak dapat membuka pintu"}))
-        }
-    }).catch(err => console.log(`[REQ ERROR - ${req.path}]: ${err}`));
+    // Check user gem
+    const user = await Users.findOne({uuid})
+
+    if(!user) return res.status(404).json(return_format({status: 406, msg: "User tidak ditemukan"}))
+
+    // Check gem
+    if (user?.gem >= 5) {
+        
+        // Open door
+        await Galleries.findOne({room_id: id}).then(async room => {
+            if(room && room?.device_socket) {
+                socket.to(room?.device_socket).emit('unlock', uuid)
+                res.status(200).send(return_format({status: 200, msg: "Membuka pintu"}))
+            } else {
+                res.status(406).send(return_format({status: 406, msg: "Tidak dapat membuka pintu"}))
+            }
+        }).catch(err => console.log(`[REQ ERROR - ${req.path}]: ${err}`));
+    } else return res.status(406).send(return_format({status: 406, msg: "Gem kamu tidak cukup untuk membuka pintu, carilah marker gem, selesaikan quiz dan dapatkan gem, semoga beruntung!"}))
 })
 
 module.exports = router
