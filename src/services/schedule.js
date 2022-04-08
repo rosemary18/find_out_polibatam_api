@@ -1,7 +1,6 @@
 const cron = require('node-cron')
 const { Gems } = require('../databases')
-const {schedule} = cron
-const http = require('http')
+const { schedule } = cron
 const axios = require('axios').default
 
 const suffleGems = schedule('*/5 * * * *', async () => {
@@ -9,7 +8,7 @@ const suffleGems = schedule('*/5 * * * *', async () => {
     // Suffle gem type
     const Gem = await Gems.find()
     Gem.forEach(async (item, index) => {
-        item.type !== 3 && await Gems.findByIdAndUpdate(item._id, {type: Math.floor(Math.random()*3)})  
+        item.type !== 2 && await Gems.findByIdAndUpdate(item._id, {type: Math.floor(Math.random()*2)})  
     })
 })
 
@@ -18,17 +17,17 @@ const suffleSecretGems = schedule('30 17 * * *', async () => {
     // Suffle secret gem
     const Gem = await Gems.find()
     Gem.forEach(async (item, _) => {
-        if (item.type === 3) await Gems.findByIdAndUpdate(item.id, {type: 0})
+        if (item.type === 2) await Gems.findByIdAndUpdate(item.id, {type: 0})
     })
 
-    await Gems.findByIdAndUpdate(Gem[Math.floor(Math.random()*Gem.length)].id, {type: 3}).catch(err => console.log(err))
+    await Gems.findByIdAndUpdate(Gem[Math.floor(Math.random()*Gem.length)].id, {type: 2}).catch(err => console.log(err))
 })
 
 const resetGems = schedule('*/6 * * * *', async () => {
 
     // Suffle secret gem
     await Gems.updateMany(
-        { type: { $ne: 3 } }, 
+        { type: { $ne: 2 } }, 
         { type: 0 }
     ).catch(err => console.log(err))
 })
