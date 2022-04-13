@@ -11,6 +11,10 @@ const gemSchema = new Schema({
         type: Number,
         default: 0
     },
+    chance: {
+		type: Number,
+		default: 0
+	},
 	last_update: {
 		type: Date,
 		default: Date.now

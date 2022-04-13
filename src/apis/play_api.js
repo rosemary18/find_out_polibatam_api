@@ -21,16 +21,14 @@ router.post("/scan", middleware.USER, async (req, res) => {
     let exist = false
     let random_quiz_index = Math.floor(Math.random() * (quiz?.length - 1) + 0)
 
-    Users.findOne({uuid}).populate(['galleries', 'achievements']).exec(async (err, user) => {
+    Users.findOne({uuid}).populate([{path: 'achievements'}, {path: 'galleries', populate: { path: 'room' }}]).exec(async (err, user) => {
 
         if (err) {
             console.log(`[REQ ERROR - ${req.path}]: ${err}`)
             res.status(404).json(return_format({msg: 'Terjadi kesalahan', status: 404}))
         }
         
-        if(!user) {
-            return res.status(406).send(return_format({status: 406, msg: "User tidak ditemukan"}))
-        }
+        if(!user) return res.status(406).send(return_format({status: 406, msg: "User tidak ditemukan"}))
 
         // Achievement 
         if (!user.achievements.some((item, i) => item.achievement_id === '3')) {
@@ -71,17 +69,20 @@ router.post("/scan", middleware.USER, async (req, res) => {
             if(!room) {
                 return res.send(return_format({status: 406, msg: "Ruangan tidak ditemukan"}))
             }
-    
-            exist = user?.galleries.length > 0 && user?.galleries.some((item) => item.room_id === room_id)
             
-            if (!exist) {
-                return res.status(200).send(return_format({status: 200, data: quiz[random_quiz_index], msg: 'Kamu mendapatkan quiz'}))      
-            } else {
-                return res.status(200).send(return_format({status: 200, msg: 'Sukses'}))      
-            }
+            let room_index = null
+            user?.galleries.map((item, i) => item.room.room_id === room_id && (room_index = i))
+
+            
+            if (room_index === null) {
+                user.galleries.push({room: room.id})
+                user.last_update = new Date()
+                await user.save()
+            } else if(user?.galleries[room_index].is_quiz) return res.status(200).send(return_format({status: 200, data: {room: room}, msg: 'Sukses'}))      
+            
+            return res.status(200).send(return_format({status: 200, data: {room: room, quiz: quiz[random_quiz_index]}, msg: 'Kamu mendapatkan quiz'}))      
         }
     })
-
 })
 
 // @POST Answear quiz
@@ -95,7 +96,7 @@ router.post("/answear", middleware.USER, async (req, res) => {
     const quiz = await Quizzes.findOne({quiz_id})
     const achievement = await Achievements.find()
 
-    Users.findOne({uuid}).populate(['galleries', 'achievements']).exec(async (err, user) => {
+    Users.findOne({uuid}).populate([{path: 'achievements'}, {path: 'galleries', populate: { path: 'room' }}]).exec(async (err, user) => {
         
         if (err) {
             console.log(`[REQ ERROR - ${req.path}]: ${err}`)
@@ -131,16 +132,29 @@ router.post("/answear", middleware.USER, async (req, res) => {
                     user.gem_logs[log].last_scan = Date.now()
                 }
     
-                if (gem.type === 0)  user.gem += 1
-                else if (gem.type === 1) user.gem += 2
-                else if (gem.type === 2) {
-                    if (!user.achievements.some((item, i) => item.achievement_id === '2')) {
-                        achievement.forEach((item, i) => {
-                            item.achievement_id === '2' && user.achievements.push(item.id)
-                        })
+                if (gem.type === 0) {
+                    user.gem += 1
+                    user.secret_chance = Math.max(Math.min(5, user.secret_chance+1), 0)
+                } else if (gem.type === 1) {
+                    user.gem += 2
+                    user.secret_chance = Math.max(Math.min(5, user.secret_chance+1), 0)
+                } else if (gem.type === 2) {
+                    if((user.secret_chance + gem.chance) >= 100) {
+
+                        if (!user.achievements.some((item, i) => item.achievement_id === '2')) {
+                            achievement.forEach((item, i) => {
+                                item.achievement_id === '2' && user.achievements.push(item.id)
+                            })
+                        }
+                        
+                        user.gem += 20
+                        user.secret_chance = 0
+                        gem.type = 0
+                        gem.chance = 0
+                    } else {
+                        user.gem += 1
+                        user.secret_chance = Math.max(Math.min(5, user.secret_chance+1), 0)
                     }
-                    user.gem += 20
-                    gem.type = 0
                 }
 
                 user.answered_quiz += 1;
@@ -160,7 +174,7 @@ router.post("/answear", middleware.USER, async (req, res) => {
 
                 user.last_update = new Date()
                 user.save().catch(err => console.log(`[REQ ERROR - ${req.path}]: ${err}`));
-                gem.save()
+                gem.save().catch(err => console.log(`[REQ ERROR - ${req.path}]: ${err}`));
 
                 return res.status(200).send(return_format({status: 200, data: user, msg: "Jawaban benar"}))
             } else {
@@ -169,33 +183,29 @@ router.post("/answear", middleware.USER, async (req, res) => {
         } else {
     
             const room = await Galleries.findOne({room_id})
-            
-            if(!room) {
-                return res.send(return_format({status: 406, msg: "Ruangan tidak ditemukan"}))
-            }
+            if(!room) return res.send(return_format({status: 406, msg: "Ruangan tidak ditemukan"}))
             
             // Check answear
             if (quiz.answear_index === parseInt(answear_index)) {
                 
                 let log_room = null
-                await user.galleries?.map((item, i) => item?.room_id === room_id && (log_room = i))
+                await user.galleries?.map((item, i) => item?.room?.room_id === room_id && (log_room = i))
                 
-                if(log_room === null) {
+                if (log_room === null) user.galleries.push({room: room.id, is_quiz: true})
+                else user.galleries[log_room].is_quiz = true
+                
+                user.score += 5;
+                user.answered_quiz += 1;
+                
+                // Achievement
+                if (!user.achievements.some((item, i) => item.achievement_id === '5') && user.answered_quiz >= 50) {
+                    achievement.forEach((item, i) => {
+                        item.achievement_id === '5' && user.achievements.push(item.id)
+                    })
+                }
 
-                    user.galleries.push(room.id)
-                    user.score += 5;
-                    user.answered_quiz += 1;
-                    
-                    // Achievement
-                    if (!user.achievements.some((item, i) => item.achievement_id === '5') && user.answered_quiz >= 50) {
-                        achievement.forEach((item, i) => {
-                            item.achievement_id === '5' && user.achievements.push(item.id)
-                        })
-                    }
-                    
-                    user.last_update = new Date()
-                    user.save().catch(err => console.log(`[REQ ERROR - ${req.path}]: ${err}`))
-                }   
+                user.last_update = new Date()
+                user.save().catch(err => console.log(`[REQ ERROR - ${req.path}]: ${err}`))
                 
                 return res.status(200).send(return_format({data: user, status: 200, msg: "Jawaban benar"}))
             } else {

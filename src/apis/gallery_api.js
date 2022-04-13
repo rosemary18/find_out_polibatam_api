@@ -15,9 +15,9 @@ router.get("/", middleware.ADMIN, (req, res) => {
 // @POST Create gallery items
 router.post("/", middleware.ADMIN, (req, res) => {
 
-    const {id, description} = req.body
+    const {id, name, description} = req.body
     
-    if (!id || !description) {
+    if (!id || !description || !name) {
         return res.send(return_format({status: 406, msg: "Data yang diperlukan tidak ditemukan"}))
     }
 
@@ -25,6 +25,7 @@ router.post("/", middleware.ADMIN, (req, res) => {
         if(!item) {
             const newGallery = new Galleries({
                 room_id: id,
+                room_name: name,
                 room_description: description
             })
         
@@ -39,15 +40,14 @@ router.post("/", middleware.ADMIN, (req, res) => {
 router.put("/:room_id", middleware.ADMIN, async (req, res) => {
 
     const {room_id} = req.params
-    const {description} = req.body
+    const {description, name} = req.body
     
-    if (!description) {
-        return res.send(return_format({status: 406, msg: "Data yang diperlukan tidak di temukan"}))
-    }
+    if (!description && !name) return res.send(return_format({status: 406, msg: "Data yang diperlukan tidak di temukan"}))
 
     const room = await Galleries.findOne({room_id})
     if(!room) return res.status(404).json(return_format({status: 404, msg: "Ruangan tidak ditemukan"}))
 
+    room.room_name = name
     room.room_description = description
 
     room.save()

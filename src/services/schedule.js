@@ -17,10 +17,10 @@ const suffleSecretGems = schedule('30 17 * * *', async () => {
     // Suffle secret gem
     const Gem = await Gems.find()
     Gem.forEach(async (item, _) => {
-        if (item.type === 2) await Gems.findByIdAndUpdate(item.id, {type: 0})
+        if (item.type === 2) await Gems.findByIdAndUpdate(item.id, {type: 0, chance: 0})
     })
 
-    await Gems.findByIdAndUpdate(Gem[Math.floor(Math.random()*Gem.length)].id, {type: 2}).catch(err => console.log(err))
+    await Gems.findByIdAndUpdate(Gem[Math.floor(Math.random()*Gem.length)].id, {type: 2, chance: 95+Math.floor(Math.random()*3)}).catch(err => console.log(err))
 })
 
 const resetGems = schedule('*/6 * * * *', async () => {

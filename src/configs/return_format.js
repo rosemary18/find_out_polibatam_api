@@ -3,6 +3,7 @@ const format = {
     data: [],
     status: 200,
     msg: "",
+    total: 0
 }
 
 module.exports = (form = format) => {

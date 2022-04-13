@@ -27,8 +27,23 @@ const userSchema = new Schema({
 		type: Number,
 		default: 0
 	},
+	secret_chance: {
+		type: Number,
+		default: 0
+	},
 	achievements: [{type: Schema.Types.ObjectId, ref: 'achievements'}],
-	galleries: [{type: Schema.Types.ObjectId, ref: 'galleries'}],
+	galleries: [
+		{
+			room: {
+				type: Schema.Types.ObjectId, 
+				ref: 'galleries'
+			},
+			is_quiz: {
+				type: Boolean,
+				default: false
+			}
+		}
+	],
 	gem_logs: [
 		{
 			gem_id: {

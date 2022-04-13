@@ -8,7 +8,7 @@ const middleware = require('../services/middleware')
 // @GET all user
 router.get("/all", middleware.ADMIN, (req, res) => {
     
-    Users.find().populate(['achievements', 'galleries']).exec((err, items) => {
+    Users.find().populate([{path: 'achievements'}, {path: 'galleries', populate: { path: 'room' }}]).exec((err, items) => {
 
         if (err) {
             console.log(`[REQ ERROR - ${req.path}]: ${err}`)
@@ -19,12 +19,30 @@ router.get("/all", middleware.ADMIN, (req, res) => {
     })
 })
 
+// @GET specific
+router.get("/:uuid", middleware.ADMIN, (req, res) => {
+
+    const {uuid} = req.params
+    
+    Users.find({uuid}).populate([{path: 'achievements'}, {path: 'galleries', populate: { path: 'room' }}]).exec((err, user) => {
+
+        if (err) {
+            console.log(`[REQ ERROR - ${req.path}]: ${err}`)
+            res.status(404).json(return_format({msg: 'Terjadi kesalahan', status: 404}))
+        }
+
+        if(!user) return res.status(406).send(return_format({status: 406, msg: "User tidak ditemukan"}))
+
+        res.status(200).json(return_format({data: user, status: 200}))
+    })
+})
+
 // @GET single user
 router.get("/", middleware.USER, (req, res) => {
     
     const {uuid} = req.headers
 
-    Users.findOne({uuid}).populate(['achievements', 'galleries']).exec((err, user) => {
+    Users.findOne({uuid}).populate([{path: 'achievements'}, {path: 'galleries', populate: { path: 'room' }}]).exec((err, user) => {
 
         if (err) {
             console.log(`[REQ ERROR - ${req.path}]: ${err}`)

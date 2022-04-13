@@ -7,6 +7,10 @@ const gallerySchema = new Schema({
         type: String,
         default: ""
     },
+    room_name: {
+        type: String,
+        default: ""
+    },
     room_description: {
         type: String,
         default: ""
