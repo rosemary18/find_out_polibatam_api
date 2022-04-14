@@ -8,7 +8,7 @@ const middleware = require('../services/middleware')
 router.get("/", middleware.ALL, (req, res) => {
 
     Achievements.find().then((items) => {
-        res.send(return_format({data: items}))
+        res.status(200).send(return_format({data: items, status: 200, total: items.length}))
     }).catch(err => console.log(`[REQ ERROR - ${req.path}]: ${err}`));
 })
 

@@ -15,7 +15,7 @@ router.get("/all", middleware.ADMIN, (req, res) => {
             res.status(404).json(return_format({msg: 'Terjadi kesalahan', status: 404}))
         }
 
-        res.status(200).json(return_format({data: items, status: 200}))
+        res.status(200).json(return_format({data: items, status: 200, total: items.length}))
     })
 })
 
