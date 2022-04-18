@@ -5,7 +5,7 @@ const middleware = require('../services/middleware')
 const { Galleries } = require('../databases')
 
 // @GET Get all gallery items
-router.get("/", middleware.ADMIN, (req, res) => {
+router.get("/", middleware.ALL, (req, res) => {
 
     Galleries.find().then((items) => {
         res.status(200).send(return_format({data: items, status: 200, total: items.length}))

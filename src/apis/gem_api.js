@@ -6,7 +6,7 @@ const { Gems } = require('../databases');
 const { generate_id } = require("../utils");
 
 // @GET Get all gems
-router.get("/", middleware.ALL, (req, res) => {
+router.get("/", middleware.ADMIN, (req, res) => {
 
     Gems.find().then((items) => {
         res.status(200).send(return_format({data: items, status: 200, total: items.length}))
