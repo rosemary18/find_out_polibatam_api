@@ -46,7 +46,6 @@ const start = () => {
     suffleGems.start()
     suffleSecretGems.start()
     resetGems.start()
-    keepAwake.start()
 }
 
 const stop = () => {
