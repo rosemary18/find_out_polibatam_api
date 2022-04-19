@@ -6,6 +6,7 @@ const axios = require('axios').default
 const suffleGems = schedule('*/5 * * * *', async () => {
     
     // Suffle gem type
+    console.log("Suffle gems")
     const Gem = await Gems.find()
     Gem.forEach(async (item, index) => {
         item.type !== 2 && await Gems.findByIdAndUpdate(item._id, {type: Math.floor(Math.random()*2)})  
