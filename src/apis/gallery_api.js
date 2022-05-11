@@ -15,7 +15,7 @@ router.get("/", middleware.ALL, (req, res) => {
 // @POST Create gallery items
 router.post("/", middleware.ADMIN, (req, res) => {
 
-    const {id, name, description} = req.body
+    const {id, name, description, public} = req.body
     
     if (!id || !description || !name) {
         return res.send(return_format({status: 406, msg: "Data yang diperlukan tidak ditemukan"}))
@@ -25,6 +25,7 @@ router.post("/", middleware.ADMIN, (req, res) => {
         if(!item) {
             const newGallery = new Galleries({
                 room_id: id,
+                public: public === 1 ? true : false,
                 room_name: name,
                 room_description: description
             })
@@ -40,7 +41,7 @@ router.post("/", middleware.ADMIN, (req, res) => {
 router.put("/:room_id", middleware.ADMIN, async (req, res) => {
 
     const {room_id} = req.params
-    const {description, name} = req.body
+    const {public, description, name} = req.body
     
     if (!description && !name) return res.send(return_format({status: 406, msg: "Data yang diperlukan tidak di temukan"}))
 
@@ -49,6 +50,7 @@ router.put("/:room_id", middleware.ADMIN, async (req, res) => {
 
     room.room_name = name
     room.room_description = description
+    public && (room.public = public === 1 ? true : false)
 
     room.save()
     .then((item) => res.status(200).json(return_format({status: 200, data: item, msg: "Ruangan berhasil diupdate"})))

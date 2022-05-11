@@ -224,11 +224,13 @@ router.post("/open-door/:id", middleware.USER, async (req, res) => {
 
     // Check user gem
     const user = await Users.findOne({uuid})
+    const room = await Galleries.findOne({room_id: id})
 
     if(!user) return res.status(404).json(return_format({status: 406, msg: "User tidak ditemukan"}))
+    if(!room) return res.status(404).json(return_format({status: 406, msg: "Ruangan tidak ditemukan"}))
 
     // Check gem
-    if (user?.gem >= 5) {
+    if (user?.gem >= 5 && room.public === true) {
         
         // Open door
         await Galleries.findOne({room_id: id}).then(async room => {

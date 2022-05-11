@@ -33,14 +33,6 @@ const resetGems = schedule('*/6 * * * *', async () => {
     ).catch(err => console.log(err))
 })
 
-const keepAwake = schedule('*/5 * * * *', () => {
-
-    // Awake
-    axios.post('https://rosemary18-keep-awake.herokuapp.com', {callback: 'https://fop-server-id.herokuapp.com'})
-         .then(() => console.log('Ignore idling ...'))
-         .catch(err => console.log(err))
-})
-
 const start = () => {
 
     // Start schedule functions

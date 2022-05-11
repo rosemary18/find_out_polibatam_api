@@ -7,6 +7,10 @@ const gallerySchema = new Schema({
         type: String,
         default: ""
     },
+    public: {
+        type: Boolean,
+        default: false,
+    },
     room_name: {
         type: String,
         default: ""
