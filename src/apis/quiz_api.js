@@ -4,6 +4,13 @@ const { return_format } = require('../configs')
 const middleware = require('../services/middleware')
 const { Quizzes } = require('../databases');
 const { generate_id } = require("../utils");
+const body_parser = require('body-parser');
+
+const rawVerify =  (req, res, buf, encoding) =>{
+    if (buf && buf.length) {
+        req.rawBody = JSON.parse(buf.toString(encoding || 'utf8'))
+    }
+}
 
 // @GET Get all quiz
 router.get("/", middleware.ALL, (req, res) => {
@@ -14,22 +21,41 @@ router.get("/", middleware.ALL, (req, res) => {
 })
 
 // @POST Add quizzes
-router.post("/", middleware.ADMIN, (req, res) => {
+router.post("/", body_parser.raw({verify: rawVerify, type: '*/*'}), middleware.ADMIN, (req, res) => {
 
-    const {question, answear_index, options} = req.body
+    if (req?.rawBody && req?.rawBody?.length > 0) {
+
+        const bulk = Quizzes.collection.initializeUnorderedBulkOp()
+        
+        req.rawBody.map((item) => {
+            const {question, answear_index, options} = item
+            bulk.insert({
+                quiz_id: generate_id(8),
+                question,
+                answear_index,
+                options
+            })
+        })
+
+        bulk.execute().then(() => res.send(return_format({status: 200, data: [], msg: "Bulk quiz berhasil ditambahkan"}))).catch(err => console.log(`[REQ ERROR - ${req.path}]: ${err}`));
+        
+    } else {
+        
+        const {question, answear_index, options} = req?.rawBody || req?.body
+        
+        if (!question || !answear_index || !options) {
+            return res.send(return_format({status: 406, msg: "Data yang diperlukan tidak di temukan"}))
+        }
     
-    if (!question || !answear_index || !options) {
-        return res.send(return_format({status: 406, msg: "Data yng diperlukan tidak di temukan"}))
+        const newQuiz = new Quizzes({
+            quiz_id: generate_id(8),
+            question,
+            answear_index,
+            options
+        })
+    
+        newQuiz.save().then((items) => res.send(return_format({status: 200, data: items, msg: "Quiz berhasil ditambahkan"}))).catch(err => console.log(`[REQ ERROR - ${req.path}]: ${err}`));
     }
-
-    const newQuiz = new Quizzes({
-        quiz_id: generate_id(8),
-        question,
-        answear_index,
-        options
-    })
-
-    newQuiz.save().then((items) => res.send(return_format({status: 200, data: items, msg: "Quiz berhasil ditambahkan"}))).catch(err => console.log(`[REQ ERROR - ${req.path}]: ${err}`));
 })
 
 // @PUT Update quiz
