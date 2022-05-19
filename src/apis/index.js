@@ -4,6 +4,7 @@ const gem_api = require('./gem_api')
 const play_api = require('./play_api')
 const achievement_api = require('./achievement_api')
 const quiz_api = require('./quiz_api')
+const quest_api = require('./quest_api')
 
 module.exports = {
     user_api,
@@ -11,5 +12,6 @@ module.exports = {
     gem_api,
     play_api,
     achievement_api,
-    quiz_api
+    quiz_api,
+    quest_api
 }

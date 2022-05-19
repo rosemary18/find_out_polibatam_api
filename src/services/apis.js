@@ -1,4 +1,4 @@
-const {user_api, gallery_api, play_api, gem_api, achievement_api, quiz_api} = require('../apis')
+const {user_api, gallery_api, play_api, gem_api, achievement_api, quiz_api, quest_api} = require('../apis')
 
 module.exports = (app) => {
 
@@ -9,4 +9,5 @@ module.exports = (app) => {
     app.use('/api/gem', gem_api)
     app.use('/api/achievement', achievement_api)
     app.use('/api/quiz', quiz_api)
+    app.use('/api/quest', quest_api)
 }
