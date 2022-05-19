@@ -23,7 +23,7 @@ const generate_quest = (room) => {
         `5 menit lagi Arum harus mengikuti sesi pertemuan di ruangan ${room}, bantu arum menemukan ruangan ${room}`,
     ]
 
-    return samples[Math.floor(Math.random()*samples.length)]
+    return samples[Math.floor(Math.random()*samples.length)]+`. \n Petunjuk: Ruangan berada di lantai ${room[0]}`
 }
 
 module.exports = {
