@@ -241,7 +241,10 @@ router.post("/open-door/:id", middleware.USER, async (req, res) => {
                 res.status(406).send(return_format({status: 406, msg: "Tidak dapat membuka pintu"}))
             }
         }).catch(err => console.log(`[REQ ERROR - ${req.path}]: ${err}`));
-    } else return res.status(406).send(return_format({status: 406, msg: "Gem kamu tidak cukup untuk membuka pintu, carilah marker gem, selesaikan quiz dan dapatkan gem, semoga beruntung!"}))
+    } else {
+        if (room.public !== true) return res.status(406).send(return_format({status: 406, msg: "Ruangan tidak bersifat publik!"}))
+        return res.status(406).send(return_format({status: 406, msg: "Gem kamu tidak cukup untuk membuka pintu, carilah marker gem, selesaikan quiz dan dapatkan gem, semoga beruntung!"}))
+    }
 })
 
 module.exports = router

@@ -1,0 +1,377 @@
+[
+    {
+     "question": "Apa nama gedung yang diresmikan pada awal tahun 2022?",
+     "answear_index": 0,
+     "options": ["Technopreneur", "Seaside Hangar", "Polibatam Convention Centre", "Rooftop Teaching Factory"]
+    },
+    {
+     "question": "Apa yang menjadi slogan Politeknik Negeri Batam?",
+     "answear_index": 0,
+     "options": ["For Your Goals Beyond Horizon", "Excellence with Morality", "A Place to Create Your Succcess", "Dare to Reach the Highest"]
+    },
+    {
+     "question": "Pada tahun berapa Politeknik Negeri Batam berdiri?",
+     "answear_index": 0,
+     "options": [2000, 2001, 2002, 2003]
+    },
+    {
+     "question": "Sebelum memiliki nama Politeknik Negeri Batam, dikenal \ndengan nama apa?",
+     "answear_index": 0,
+     "options": ["Politeknik Batam", "Universitas Negeri Batam", "Universitas Kepulauan Riau", "Institut Teknologi Batam"]
+    },
+    {
+     "question": "Siapa direktur Politeknik Negeri Batam yang pertama?",
+     "answear_index": 0,
+     "options": ["Dr. Ir. Priyono Eko Sanyoto, D.E.A", "Uuf Brajawidagda, ST., MT., Ph.D", "Ahmad Riyad Firdaus, S.Si., M.T., Ph.D", "Bambang Hendrawan, ST., MSM., CIPMP., CISCP"]
+    },
+    {
+     "question": "Jurusan manakah yang tidak terdapat di Politeknik Negeri Batam?",
+     "answear_index": 1,
+     "options": ["Teknik Informatika", "Teknik Mekatronika", "Teknik Elektronika", "Teknik Mesin"]
+    },
+    {
+     "question": "Prodi manakah yang tidak termasuk dalam jurusan Teknik Informatika?",
+     "answear_index": 3,
+     "options": ["Teknik Multimedia dan Jaringan", "Teknik Informatika", "Rekayasa Keamanan Cyber", "Rekayasa Perangkat Lunak"]
+    },
+    {
+     "question": "Prodi manakah yang tidak termasuk dalam jurusan Teknik Elektronika?",
+     "answear_index": 3,
+     "options": ["Teknik Elektronika", "Teknik Robotika", "Teknik Rekayasa Pembangkit Energi", "Teknik Metalurgi"]
+    },
+    {
+     "question": "Prodi manakah yang tidak termasuk dalam jurusan Managemen Bisnis?",
+     "answear_index": 1,
+     "options": ["Akuntasi", "Ekonomi Pembangunan", "Administrasi Bisnis Terapan", "Business Administration"]
+    },
+    {
+     "question": "Prodi manakah yang tidak termasuk dalam jurusan Teknik Mesin?",
+     "answear_index": 3,
+     "options": ["Teknik Mesin", "Teknik Perawatan Pesawat Udara", "Teknik Perencanaan dan Konstruksi Kapal", "Teknik Otomotif"]
+    },
+    {
+     "question": "Prodi manakah yang termasuk dalam jurusan Teknik Informatika?",
+     "answear_index": 1,
+     "options": ["Teknik Geologi", "Teknik Geomatika", "Geografi Pembangunan", "Teknik Perencanaan Tata Ruang"]
+    },
+    {
+     "question": "Prodi manakah yang termasuk dalam jurusan Teknik Elektronika?",
+     "answear_index": 3,
+     "options": ["Teknik Elektro", "Teknik Sipil", "Teknik Mesin", "Teknik Mekatronika"]
+    },
+    {
+     "question": "Prodi manakah yang termasuk dalam jurusan Managemen Bisnis?",
+     "answear_index": 2,
+     "options": ["Managemen", "Bisnis", "Akuntansi Manajerial", "Ekonomi"]
+    },
+    {
+     "question": "Prodi manakah yang termasuk dalam jurusan Teknik Mesin?",
+     "answear_index": 3,
+     "options": ["Teknik Produksi", "Teknik Material", "Teknik Metalurgi", "Teknik Perawatan Pesawat Udara"]
+    },
+    {
+     "question": "Prodi teknik robotika termasuk dalam jurusan apa?",
+     "answear_index": 1,
+     "options": ["Teknik Informatika", "Teknik Elektronika", "Teknik Matematika", "Teknik Sipil"]
+    },
+    {
+     "question": "Prodi teknik geomatika termasuk dalam jurusan apa?",
+     "answear_index": 0,
+     "options": ["Teknik Informatika", "Teknik Elektronika", "Teknik Matematika", "Teknik Sipil"]
+    },
+    {
+     "question": "Prodi logistik perdagangan internasional termasuk dalam jurusan apa?",
+     "answear_index": 1,
+     "options": ["Ekonomi", "Manajemen Bisnis", "Akuntansi", "Bisnis Digital"]
+    },
+    {
+     "question": "Prodi rekayasa keamanan cyber termasuk dalam jurusan apa?",
+     "answear_index": 0,
+     "options": ["Teknik Informatika", "Teknik Elektronika", "Teknik Matematika", "Teknik Sipil"]
+    },
+    {
+     "question": "Terdapat berapa lantai pada gedung utama?",
+     "answear_index": 2,
+     "options": [7, 8, 9, 10]
+    },
+    {
+     "question": "Terdapat berapa lantai pada tower A?",
+     "answear_index": 2,
+     "options": [11, 12, 13, 14]
+    },
+    {
+     "question": "Politeknik Negeri Batam didirikan pertama kali dengan nama?",
+     "answear_index": 0,
+     "options": ["Politeknik Batam", "Universitas Negeri Batam", "Universitas Kepulauan Riau", "Institut Teknologi Batam"]
+    },
+    {
+     "question": "Manakah yang tidak termasuk dalam lab jurusan Teknik Informatika?",
+     "answear_index": 2,
+     "options": ["Lab Sistem Operasi", "Lab Rendering", "Lab Mockup", "Lab Virtual Reality"]
+    },
+    {
+     "question": "Terdapat berapa lantai pada gedung RTF?",
+     "answear_index": 3,
+     "options": [6, 7, 8, 9]
+    },
+    {
+     "question": "Terdapat berapa ruangan pada LANTAI 6 gedung utama?",
+     "answear_index": 1,
+     "options": [5, 6, 7, 8]
+    },
+    {
+     "question": "Lab mana yang tidak terdapat pada LANTAI 6 gedung utama?",
+     "answear_index": 3,
+     "options": ["Lab Multimedia", "Lab Jaringan Komputer", "Lab Sistem Operasi", "Lab ADR"]
+    },
+    {
+     "question": "Siapakah yang meresmikan Politeknik Negeri Batam",
+     "answear_index": 0,
+     "options": ["Prof. Dr. Dr. (HC). H. Susilo Bambang Yudhoyono, M.A", "Prof. Dr. Ir. K.H. Mohammad Nuh, DEA", "Drs. H. Ahmad Dahlan, M.H., Ph.D", "Nyat Kadir"]
+    },
+    {
+     "question": "Pada tahun berapa Politeknik Negeri Batam diresmikan?",
+     "answear_index": 3,
+     "options": [2003, 2004, 2005, 2006]
+    },
+    {
+     "question": "Presiden Republik Indonesia ke-berapa yang meresmikan Politeknik Negeri \nBatam?",
+     "answear_index": 3,
+     "options": ["Ketiga", "Keempat", "Kelima", "Keenam"]
+    },
+    {
+     "question": "Pada era presiden Republik Indonesia keberapa Politeknik Negeri Batam \nberdiri?",
+     "answear_index": 1,
+     "options": ["Kedua", "Ketiga", "Keempat", "Kelima"]
+    },
+    {
+     "question": "Politeknik Negeri Batam terletak di kecamatan apa?",
+     "answear_index": 0,
+     "options": ["Batam Kota", "Bengkong", "Lubuk Baja", "Nongsa"]
+    },
+    {
+     "question": "Berlokasi di kelurahan apa Politeknik Negeri Batam?",
+     "answear_index": 1,
+     "options": ["Baloi Permai", "Teluk Tering", "Taman Baloi", "Batu Selicin"]
+    },
+    {
+     "question": "Nomor ruangan berapa yang tidak terdapat di LANTAI 6 gedung utama?",
+     "answear_index": 3,
+     "options": [602, 603, 604, 618]
+    },
+    {
+     "question": "Nomor ruangan berapa yang tidak terdapat di LANTAI 7 gedung utama?",
+     "answear_index": 3,
+     "options": [701, 702, 707, 709]
+    },
+    {
+     "question": "Siapakah direktur Politeknik Negeri Batam dengan masa jabatan terlama?",
+     "answear_index": 2,
+     "options": ["Ahmad Riyad Firdaus, S.Si., M.T., Ph.D", "Uuf Brajawidagda, ST., MT., Ph.D", "Dr. Ir. Priyono Eko Sanyoto, D.E.A", "Bambang Hendrawan, ST., MSM., CIPMP., CISCP"]
+    },
+    {
+     "question": "Direktur Politeknik Negeri Batam dengan masa jabatan terlama selama \nberapa tahun?",
+     "answear_index": 0,
+     "options": [19, 20, 21, 22]
+    },
+    {
+     "question": "Siapakah direktur kedua Politeknik Negeri Batam?",
+     "answear_index": 1,
+     "options": ["Andy Triwinarko,ST, M.T., Ph.D", "Uuf Brajawidagda, ST., MT., Ph.D", "Mir'atul Khusna Mufida,S.ST, M.Sc", "Bambang Hendrawan, ST., MSM., CIPMP., CISCP"]
+    },
+    {
+     "question": "Pada tahun berapa direktur kedua Politeknik Negeri Batam memulai \nmasa jabatannya?",
+     "answear_index": 3,
+     "options": [2017, 2018, 2019, 2020]
+    },
+    {
+     "question": "Uuf Brajawidagda, ST., MT., Ph.D merupakan direktur Politeknik Negeri \nBatam yang keberapa?",
+     "answear_index": 0,
+     "options": [2, 8, 43, 56]
+    },
+    {
+     "question": "Jembatan Barelang merupakan salah satu landmark dari kota Batam yang \nmenghubungkan antara pulau Batam dengan Rempang dan Galang. \nPertanyaannya, terletak di pulau manakah Politeknik Negeri Batam?",
+     "answear_index": 0,
+     "options": ["Batam", "Rempang", "Galang", "Abang"]
+    },
+    {
+     "question": "Kepulauan Riau merupakan provinsi ke-32 hasil dari pemekaran provinsi Riau \npada tahun 2002. Di salah satu kota tersebut juga berdirilah sebuah\nperguruan tinggi negeri vokasi yang pada saat ini dikenal dengan nama?",
+     "answear_index": 3,
+     "options": ["Sekolah Tinggi Teknologi Batam", "Institut Negeri Batam", "Institut Teknologi Batam", "Politeknik Negeri Batam"]
+    },
+    {
+     "question": "Sampai dengan tahun 2022, terdapat berapa jurusan yang berada di \nPoliteknik Negeri Batam?",
+     "answear_index": 1,
+     "options": [3, 4, 5, 6]
+    },
+    {
+     "question": "Jurusan manakah yang memiliki program studi terbanyak di \nPoliteknik Negeri Batam?",
+     "answear_index": 2,
+     "options": ["Manajemen Bisnis", "Teknik Mekatronika", "Teknik Informatika", "Teknik Mesin"]
+    },
+    {
+     "question": "Jurusan manakah yang memiliki program studi tersedikit di \nPoliteknik Negeri Batam?",
+     "answear_index": 3,
+     "options": ["Manajemen Bisnis", "Teknik Elektro", "Teknik Informatika", "Teknik Mesin"]
+    },
+    {
+     "question": "Prodi Teknik Informatika memiliki jenjang apa?",
+     "answear_index": 2,
+     "options": ["Diploma 1", "Diploma 2", "Diploma 3", "Diploma 4"]
+    },
+    {
+     "question": "Program Studi Teknik Elektronika memiliki jenjang apa?",
+     "answear_index": 2,
+     "options": ["Diploma 4", "Diploma 3", "Diploma 2", "Diploma 1"]
+    },
+    {
+     "question": "Program Studi apakah yang memiliki jenjang Diploma 4?",
+     "answear_index": 3,
+     "options": ["Teknik Mesin", "Teknik Geomatika", "Teknik Perawatan Pesawat Udara", "Teknik Multimedia dan Jaringan"]
+    },
+    {
+     "question": "Jurusan manakah yang memiliki program studi Diploma 3 terbanyak di Politeknik Negeri Batam?",
+     "answear_index": 1,
+     "options": ["Manajemen Bisnis", "Teknik Elektro", "Teknik Informatika", "Teknik Mesin"]
+    },
+    {
+     "question": "Jurusan manakah yang memiliki program studi Diploma 3 tersedikit di Politeknik Negeri Batam?",
+     "answear_index": 0,
+     "options": ["Manajemen Bisnis", "Teknik Elektro", "Teknik Informatika", "Teknik Mesin"]
+    },
+    {
+     "question": "Program studi Teknik Rekayasa Perangkat Lunak memiliki jenjang apa?",
+     "answear_index": 0,
+     "options": ["Diploma 4", "Diploma 3", "Diploma 2", "Diploma 1"]
+    },
+    {
+     "question": "Program studi Teknik Multimedia dan Jaringan memiliki jenjang apa?",
+     "answear_index": 3,
+     "options": ["Diploma 1", "Diploma 2", "Diploma 3", "Diploma 4"]
+    },
+    {
+     "question": "Apa akreditasi program studi Teknik Multimedia dan Jaringan pada tahun 2018?",
+     "answear_index": 1,
+     "options": ["A", "B", "C", "D"]
+    },
+    {
+     "question": "Apa akreditasi program studi Teknik Multimedia dan Jaringan pada tahun 2019?",
+     "answear_index": 2,
+     "options": ["D", "C", "B", "A"]
+    },
+    {
+     "question": "Apa akreditasi program studi Teknik Multimedia dan Jaringan pada tahun 2020?",
+     "answear_index": 1,
+     "options": ["C", "B", "A", "D"]
+    },
+    {
+     "question": "Apa akreditasi program studi Teknik Multimedia dan Jaringan pada tahun 2021?",
+     "answear_index": 0,
+     "options": ["B", "C", "D", "A"]
+    },
+    {
+     "question": "Apa akreditasi program studi Teknik Multimedia dan Jaringan pada tahun 2022?",
+     "answear_index": 3,
+     "options": ["D", "A", "C", "B"]
+    },
+    {
+     "question": "Apa akreditasi program studi Teknik Multimedia dan Jaringan pada tahun 2023?",
+     "answear_index": 3,
+     "options": ["A", "D", "C", "B"]
+    },
+    {
+     "question": "Apa akreditasi program studi Teknik Informatika pada tahun 2020?",
+     "answear_index": 3,
+     "options": ["A", "D", "C", "B"]
+    },
+    {
+     "question": "Apa akreditasi program studi Teknik Informatika pada tahun 2021?",
+     "answear_index": 0,
+     "options": ["B", "C", "D", "A"]
+    },
+    {
+     "question": "Apa akreditasi program studi Teknik Informatika pada tahun 2022?",
+     "answear_index": 3,
+     "options": ["D", "A", "C", "B"]
+    },
+    {
+     "question": "Apa akreditasi program studi Teknik Informatika pada tahun 2023?",
+     "answear_index": 1,
+     "options": ["C", "B", "A", "D"]
+    },
+    {
+     "question": "Apa akreditasi program studi Teknik Informatika pada tahun 2024?",
+     "answear_index": 2,
+     "options": ["A", "C", "B", "D"]
+    },
+    {
+     "question": "Apa akreditasi program studi Teknik Informatika pada tahun 2025?",
+     "answear_index": 1,
+     "options": ["D", "B", "C", "A"]
+    },
+    {
+     "question": "Muhammad Rudi merupakan Walikota Batam pada tahun 2021 \nberpasangan dengan Amsakar Achmad sebagai wakil walikota Batam. \nSiapakah Kepala Jurusan Teknik Informatika Politeknik Negeri Batam pada \ntahun yang sama?",
+     "answear_index": 3,
+     "options": ["Selly Artaty Zega, S.ST., M.Sc", "Hamdani Arif, S.Pd., M.Sc", "Muhammad Zainuddin Lubis, S.I.k, M.Si", "Sudra Irawan, S.Pd.Si., M.Sc"]
+    },
+    {
+     "question": "Pada tahun 2021, siapakah yang menjadi kepala program studi Teknik \nMultimedia dan Jaringan?",
+     "answear_index": 1,
+     "options": ["Ahmad Hamim Thohari, S.S.T., M.T.", "Sandi Prasetyaningsih, S.ST., M.Media", "Siti Noor Chayati, S.T., M.Sc", "Selly Artaty Zega, S.ST., M.Sc"]
+    },
+    {
+     "question": "Siapakah kepala program studi Teknik Geomatika pada tahun 2021?",
+     "answear_index": 2,
+     "options": ["Dr. Metta Santiputri, S.T., M.Sc, Ph.D", "Hilda Widyastuti, S.T., M.T.", "Muhammad Zainuddin Lubis, S.I.k,M.Sii", "Nur Cahyono Kushardianto,S.Si., M.T., M.Sc"]
+    },
+    {
+     "question": "Siapakah kepala program studi Teknik Informatika pada tahun 2021?",
+     "answear_index": 3,
+     "options": ["Riwinoto, ST,M.Kom", "Andy Triwinarko, ST, M.T., Ph.D", "Farouki Dinda Rassarandi, S.T., M.Eng.", "Ahmad Hamim Thohari, S.S.T., M.T."]
+    },
+    {
+     "question": "Siapakah Kepala Program Studi Animasi pada tahun 2021?",
+     "answear_index": 2,
+     "options": ["Dodi Prima Resda, S.Pd., M.Kom", "Dwi Ely Kurniawan, S.Pd., M.Kom", "Selly Artaty Zega, S.ST., M.Sc", "Mira Chandra Kirana, S.T., M.T"]
+    },
+    {
+     "question": "Siapakah Kepala Program Studi Rekayasa Keamanan Siber \npada tahun 2021?",
+     "answear_index": 0,
+     "options": ["Hamdani Arif, S.Pd., M.Sc", "Agus Fatulloh, S.T., M.T", "Oktavianto Gustin, S.T., M.T", "Muchamad Fajri Amirul Nasrullah, S.ST., M.Sc"]
+    },
+    {
+     "question": "Beliau merupakan salah satu staf tata usaha yang sangat dikenal oleh \nmahasiswa\/i kelas karyawan jurusan Teknik Informatika",
+     "answear_index": 1,
+     "options": ["Andri Albertha Pratama, S.Tr.Kom., M.Sn", "Dede Nurdiansyah, S.Sos", "Rhanna Mawira, S.E", "Hajrul Khaira, S.Tr.Kom"]
+    },
+    {
+     "question": "Terdapat di jalan apa Politeknik Negeri Batam?",
+     "answear_index": 0,
+     "options": ["Jalan Ahmad Yani", "Jalan Raden Patah", "Jalan Imam Bonjol", "Jalan Soedirman"]
+    },
+    {
+     "question": "Apa topik yang dibawa oleh tim Politeknik Negeri Batam pada saat menjuarai\nKMI Expo 2019?",
+     "answear_index": 1,
+     "options": ["Biozfer", "Making Indonesia \nEducation 4.0", "Flamboz Printing", "Digital Printing Solution"]
+    },
+    {
+     "question": "Pada tahun berapa Politeknik Negeri Batam pernah meraih juara II kategori\nanimasi pada Gemastik?",
+     "answear_index": 2,
+     "options": [2013, 2014, 2015, 2016]
+    },
+    {
+     "question": "Pada tahun 2011, Politeknik Negeri Batam pernah meraih juara I pada\nkompetisi apa?",
+     "answear_index": 0,
+     "options": ["KRI Nasional", "KRCI Soccer Humanoid Nasional", "Indonesia Cyber Army Nasional", "Gemastik kategori Animasi"]
+    },
+    {
+     "question": "Pada tahun berapa Politeknik Negeri Batam pernah meraih juara I dan II \nberturut-turut kategori animasi pada Gemastik?",
+     "answear_index": 2,
+     "options": [2012, 2013, 2014, 2015]
+    },
+    {
+     "question": "Pada tahun 2015, Politeknik Negeri Batam memenangkan kejuaraan fotografi\nHari Bhakti BP Batam ke-43 yang dihelat dengan tema?",
+     "answear_index": 3,
+     "options": ["Lensa Kehidupan Batam", "Eksplorasi Pariwisata &amp; \nKeindahan Alam Batam", "Potret Senja di Bumi Madani", "Jepret Batam dari Laut"]
+    }
+   ]

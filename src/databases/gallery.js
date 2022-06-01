@@ -11,6 +11,10 @@ const gallerySchema = new Schema({
         type: Boolean,
         default: false,
     },
+    quizing: {
+        type: Boolean,
+        default: true,
+    },
     room_name: {
         type: String,
         default: ""
@@ -21,7 +25,7 @@ const gallerySchema = new Schema({
     },
     room_photo: {
         type: String,
-        default: ""
+        default: "https://fop-id.herokuapp.com/images/placeholder.png"
     },
     device_socket: {
         type: String,

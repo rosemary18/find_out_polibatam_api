@@ -83,6 +83,17 @@ router.put("/:quiz_id", middleware.ADMIN, async (req, res) => {
     });
 })
 
+// @DELETE Delete all quiz
+router.delete("/all", middleware.ADMIN, (req, res) => {
+
+    Quizzes.deleteMany().then((data) => {
+        res.status(404).json(return_format({status: 200, msg: "Quiz berhasil dihapus"}))
+    }).catch(err => {
+        console.log(`[REQ ERROR - ${req.path}]: ${err}`)
+        res.status(404).json(return_format({msg: 'Terjadi kesalahan', status: 404}))
+    });
+})
+
 // @DELETE Delete quiz
 router.delete("/:quiz_id", middleware.ADMIN, (req, res) => {
 

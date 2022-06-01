@@ -41,9 +41,9 @@ router.post("/", middleware.ADMIN, (req, res) => {
 router.put("/:room_id", middleware.ADMIN, async (req, res) => {
 
     const {room_id} = req.params
-    const {public, description, name} = req.body
+    const {public, quizing, description, name, room_photo} = req.body
     
-    if (!description && !name && !public) return res.send(return_format({status: 406, msg: "Data yang diperlukan tidak di temukan"}))
+    if (!description && !name && !public && !quizing && !room_photo) return res.send(return_format({status: 406, msg: "Data yang diperlukan tidak di temukan"}))
 
     const room = await Galleries.findOne({room_id})
     if(!room) return res.status(404).json(return_format({status: 404, msg: "Ruangan tidak ditemukan"}))
@@ -51,6 +51,8 @@ router.put("/:room_id", middleware.ADMIN, async (req, res) => {
     name && (room.room_name = name)
     description && (room.room_description = description)
     public && (room.public = public == 1 ? true : false)
+    quizing && (room.quizing = quizing == 1 ? true : false)
+    room_photo && (room.room_photo = room_photo )
 
     room.save()
     .then((item) => res.status(200).json(return_format({status: 200, data: item, msg: "Ruangan berhasil diupdate"})))
