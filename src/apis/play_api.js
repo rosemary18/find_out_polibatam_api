@@ -71,7 +71,7 @@ router.post("/scan", middleware.USER, async (req, res) => {
             }
             
             let room_index = null
-            user?.galleries.map((item, i) => item.room.room_id === room_id && (room_index = i))
+            user?.galleries.map((item, i) => item.room?.room_id === room_id && (room_index = i))
 
             
             if (room_index === null) {
