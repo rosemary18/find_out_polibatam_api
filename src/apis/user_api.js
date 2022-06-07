@@ -70,7 +70,7 @@ router.delete("/:uuid", middleware.ADMIN, (req, res) => {
         if(!data) {
             return res.send(return_format({status: 406, msg: "User tidak ditemukan!"}))
         }
-        return res.send(return_format({status: 200, msg: "User berhasil dihapus"}))
+        return res.send(return_format({status: 200, msg: "User berhasil dihapus!"}))
     }).catch(err => console.log(`[REQ ERROR - ${req.path}]: ${err}`));
 })
 
