@@ -68,7 +68,7 @@ router.delete("/:uuid", middleware.ADMIN, (req, res) => {
 
     Users.findOneAndDelete({uuid}).then((data) => {
         if(!data) {
-            return res.send(return_format({status: 406, msg: "User tidak ditemukan"}))
+            return res.send(return_format({status: 406, msg: "User tidak ditemukan!"}))
         }
         return res.send(return_format({status: 200, msg: "User berhasil dihapus"}))
     }).catch(err => console.log(`[REQ ERROR - ${req.path}]: ${err}`));
