@@ -236,7 +236,7 @@ router.post("/open-door/:id", middleware.USER, async (req, res) => {
         await Galleries.findOne({room_id: id}).then(async room => {
             if(room && room?.device_socket) {
                 socket.to(room?.device_socket).emit('unlock', uuid)
-                res.status(200).send(return_format({status: 200, msg: "Membuka pintu"}))
+                res.status(200).send(return_format({status: 200, msg: "Membuka pintu ..."}))
             } else {
                 res.status(406).send(return_format({status: 406, msg: "Tidak dapat membuka pintu"}))
             }

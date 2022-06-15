@@ -24,10 +24,11 @@ router.get("/", middleware.ALL, async (req, res) => {
         
         galleries?.map((room, i) => {
             let exist = false
-            user[0].galleries?.map((_room, _i) => (room.room_id == _room.room.room_id) && (exist = true) )
-            if (!exist) filteredGelleries.push(room)
+            user[0].galleries?.map((_room, _i) => (room.room_id == _room?.room?.room_id) && (exist = true) )
+            if (!exist && (room.room_id != "007" && room.room_id != "006")) filteredGelleries.push(room)
         })
 
+        console.log(galleries)
         const selected_room = filteredGelleries[Math.floor(Math.random()*filteredGelleries.length)]
         
         res.status(200).json(return_format({data: generate_quest(selected_room.room_id), status: 200}))

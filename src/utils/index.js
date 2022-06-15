@@ -20,7 +20,7 @@ const generate_quest = (room) => {
         `Arum akan bertemu dengan dosen pembimbingnya, bantu arum menemukan ruangan ${room}`,
         `Ruangan ${room} akan menjadi tempat diselenggarakan mediasi antar himpunan organisasi, arum menjadi panitia untuk menyiapkan acara. bantu arum menemukan ruangan ${room}`,
         `Arum ingin pergi ke ruangan ${room}, bantu arum menemukan ruangan ${room}`,
-        `Malam Arum harus mengikuti sesi pertemuan di ruangan ${room}, bantu arum menemukan ruangan ${room}`,
+        `Malam ini Arum harus mengikuti sesi pertemuan di ruangan ${room}, bantu arum menemukan ruangan ${room}`,
     ]
 
     return samples[Math.floor(Math.random()*samples.length)]+`. \n Petunjuk: Ruangan berada di lantai ${room[0]}`
